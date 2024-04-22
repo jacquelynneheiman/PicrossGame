@@ -6,4 +6,6 @@ using UnityEngine;
 public class LevelData : ScriptableObject
 {
     public Texture2D sourceImage;
+    public bool isComplete;
+    public ExperienceReward experience;
 }

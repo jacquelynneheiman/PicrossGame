@@ -33,8 +33,6 @@ public class SceneLoader : MonoBehaviour
             progressBar.fillAmount = progress;
             progressText.text = (int)(progress * 100) + "%";
 
-            Debug.Log(progress);
-
             if (operation.progress >= 0.9f && !operation.allowSceneActivation)
             {
                 loadingScreen.SetActive(false);
@@ -44,7 +42,6 @@ public class SceneLoader : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("Done!");
         loadingScreen.SetActive(false);
     }
 

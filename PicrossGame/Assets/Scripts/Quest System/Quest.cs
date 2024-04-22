@@ -13,9 +13,9 @@ public class Quest : ScriptableObject
 
     public string title;
     public string description;
-    public bool isComplete;
-    public int reward;
     public QuestStatus status = QuestStatus.NotStarted;
+    public List<QuestRequirement> requirements;
+    public List<QuestReward> rewards;
 
     private void OnValidate()
     {
@@ -27,16 +27,44 @@ public class Quest : ScriptableObject
 
     public void AcceptQuest()
     {
-        status = QuestStatus.Accepted;
-        Debug.Log(title + " accepted");
+        if (status != QuestStatus.Completed && status != QuestStatus.Accepted)
+        {
+            status = QuestStatus.Accepted;
+            Debug.Log(title + " accepted");
+        }
+    }
+    
+    public void AbandonQuest()
+    {
+        if (status == QuestStatus.Accepted)
+        {
+            status = QuestStatus.NotStarted;
+            Debug.Log(title + " abandoned");
+        }
+    }
+
+    public bool HasRequirementsMet()
+    {
+        foreach(var requirement in requirements)
+        {
+            if (!requirement.IsSatisfied())
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void CompleteQuest()
     {
-        if (status == QuestStatus.Completed)
+        if (status != QuestStatus.Completed)
         {
-            status = QuestStatus.Completed;
-            Debug.Log(title + " completed!");
+            if (HasRequirementsMet())
+            {
+                status = QuestStatus.Completed;
+                Debug.Log("Completed " + title);
+            }
         }
     }
 }

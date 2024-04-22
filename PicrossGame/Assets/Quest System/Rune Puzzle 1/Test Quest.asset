@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de87c7074912bd40a9b553ee580f338, type: 3}
+  m_Name: Test Quest
+  m_EditorClassIdentifier: 
+  questID: a2b20691-1c19-41ec-a51e-f2a14ec73df5
+  title: Investigate nearby rune
+  description: Hello, adventurer! Welcome to our quaint little town. It's usually
+    pretty quiet arount here but the town has been a buzz lately with a stange glowing
+    object that appeared in the center of town. Can you check it out?
+  status: 2
+  requirements:
+  - {fileID: 11400000, guid: 31480e033b73ccd4b9ae7c35836a9ce7, type: 2}
+  rewards:
+  - {fileID: 11400000, guid: fad6eb2774067134e84e0234ecf46ead, type: 2}

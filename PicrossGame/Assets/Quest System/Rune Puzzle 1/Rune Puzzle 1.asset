@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d3345be6c909874dbb79b5e3e53e038, type: 3}
-  m_Name: Test Trigger
+  m_Script: {fileID: 11500000, guid: 6725a3c5db62f244ea4639486690a59a, type: 3}
+  m_Name: Rune Puzzle 1
   m_EditorClassIdentifier: 
-  quest: {fileID: 11400000, guid: a6f49a62f63186047b89db96e302051f, type: 2}
-  triggerDescription: 
+  levelData: {fileID: 11400000, guid: 86e941b2bef2c2841aac069310953d13, type: 2}

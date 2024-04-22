@@ -31,7 +31,15 @@ public class QuestManager : MonoBehaviour
     {
         Quest quest = GetQuestByID(questID);
 
-        if (quest != null && !quest.isComplete)
+        if (quest != null && quest.status != Quest.QuestStatus.Completed)
+        {
+            quest.AcceptQuest();
+        }
+    }
+
+    public void StartQuest(Quest quest)
+    {
+        if (quest != null && quest.status != Quest.QuestStatus.Completed)
         {
             quest.AcceptQuest();
         }
@@ -39,8 +47,19 @@ public class QuestManager : MonoBehaviour
 
     private void AcceptQuest(Quest quest)
     {
-        QuestManager.Instance.StartQuest(quest.questID);
+        Debug.Log("Accepting Quest: " + quest.title);
+
+        // add the quest to the players quest log
+        QuestLog.Instance.AddQuest(quest);
+
+        // start the quest and hide the ui
+        StartQuest(quest);
         HideQuestDetails();
+    }
+
+    public void AbandonQuest(Quest quest)
+    {
+        quest.AbandonQuest();
     }
 
     public void ShowQuestDetails(QuestTrigger questTrigger)
@@ -63,7 +82,7 @@ public class QuestManager : MonoBehaviour
     {
         Quest quest = GetQuestByID(questID);
 
-        if (quest != null && !quest.isComplete)
+        if (quest != null && quest.status != Quest.QuestStatus.Completed)
         {
             quest.CompleteQuest();
         }
@@ -72,5 +91,15 @@ public class QuestManager : MonoBehaviour
     private Quest GetQuestByID(string questID)
     {
         return quests.ToList().Where((quest) => quest.questID == questID).FirstOrDefault();
+    }
+
+    public void ApplyQuestReward(QuestReward reward)
+    {
+        IQuestReward questReward = (IQuestReward)reward;
+
+        if (questReward != null)
+        {
+            questReward.ApplyReward();
+        }
     }
 }

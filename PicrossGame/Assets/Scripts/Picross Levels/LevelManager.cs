@@ -52,6 +52,7 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel(LevelData levelData)
     {
         currentLevel = levelData;
+        currentLevel.isComplete = false;
         currentLevelGrid = levelGenerator.GenerateLevel(levelData);
         ChangeState(LevelState.Gameplay);
     }
@@ -81,8 +82,13 @@ public class LevelManager : MonoBehaviour
         Destroy(levelGenerator.GetColumnClueParent().gameObject);
         Destroy(levelGenerator.GetGridLinesParent().gameObject);
 
+        currentLevel.isComplete = true;
         UIManager.Instance.ShowWinUI();
         ChangeState(LevelState.Cleanup);
+
+        QuestLog.Instance.CheckQuestProgress();
+
+        currentLevel.experience.ApplyReward();
     }
 
     private bool CheckIfSolved()

@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0ca19a91af7306498209499f8c94e9a, type: 3}
-  m_Name: smiley_5x5
+  m_Script: {fileID: 11500000, guid: 0d3345be6c909874dbb79b5e3e53e038, type: 3}
+  m_Name: Test Trigger
   m_EditorClassIdentifier: 
-  sourceImage: {fileID: 2800000, guid: 0554f95370e0bc34ea38717934c5e949, type: 3}
-  isComplete: 0
-  experience: {fileID: 11400000, guid: 6298c76afffe71f40868d69a12bce4fe, type: 2}
+  quest: {fileID: 11400000, guid: a6f49a62f63186047b89db96e302051f, type: 2}
+  triggerDescription: Complete the run puzzle in town
